@@ -1,4 +1,4 @@
-# Equipo y Proyecto
+# Sistema web para una Farmacia
 
 ## Equipo: Bit-by-Bit Engineers
 | Rol           | Nombre          | Responsabilidades                                           |
