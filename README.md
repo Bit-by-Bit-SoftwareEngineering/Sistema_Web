@@ -6,7 +6,7 @@
 | Scrum Master  | Osacr Alfredo Menacho Silva       | Facilitar el proceso Scrum, eliminar obstáculos y coordinar reuniones. |
 | Product Owner | Andrés David Urquidi JAuregui   | Representar las necesidades de la farmacia y gestionar el Product Backlog. |
 | Desarrolladores | Miguel Angel Quisbert Daza, Rodrigo Gabriel Rivera Mayan | Desarrollar y entregar incrementos funcionales del sistema web. |
-| QAs           | José Andrés Mnzaneda   | Validar la funcionalidad y calidad de cada incremento del producto. |
+| QAs           | José Andrés Manzaneda   | Validar la funcionalidad y calidad de cada incremento del producto. |
 
 ## Proyecto
 El proyecto **Sistema Web para Farmacia** tiene como objetivo desarrollar una aplicación web que facilite la gestión de ventas, inventario y clientes en una farmacia, optimizando sus procesos operativos y mejorando la experiencia del usuario.
