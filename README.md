@@ -1,15 +1,15 @@
-# Sistema web para una Farmacia
+# Sistema Web orientado a la Gestión Inteligente de la Farmacia Vida Sana
 
 ## Equipo: Bit-by-Bit Engineers
 | Rol           | Nombre          | Responsabilidades                                           |
 |---------------|-----------------|-------------------------------------------------------------|
-| Scrum Master  | Osacr Alfredo Menacho Silva       | Facilitar el proceso Scrum, eliminar obstáculos y coordinar reuniones. |
-| Product Owner | Andrés David Urquidi JAuregui   | Representar las necesidades de la farmacia y gestionar el Product Backlog. |
+| Product Owner |  Oscar Alfredo Menacho Silva  | Representar las necesidades de la farmacia y gestionar el Product Backlog. |
+| Scrum Master  | Andrés David Urquidi Jauregui       | Facilitar el proceso Scrum, eliminar obstáculos y coordinar reuniones. |
 | Desarrolladores | Miguel Angel Quisbert Daza, Rodrigo Gabriel Rivera Mayan | Desarrollar y entregar incrementos funcionales del sistema web. |
 | QAs           | José Andrés Manzaneda   | Validar la funcionalidad y calidad de cada incremento del producto. |
 
 ## Proyecto
-El proyecto **Sistema Web para Farmacia** tiene como objetivo desarrollar una aplicación web que facilite la gestión de ventas, inventario y clientes en una farmacia, optimizando sus procesos operativos y mejorando la experiencia del usuario.
+El proyecto **Sistema Web orientado a la Gestión Inteligente de la Farmacia Vida Sana** tiene como objetivo desarrollar un Sistema Web que facilite la gestión de ventas, inventario y clientes en dicha farmacia, optimizando sus procesos operativos y mejorando la experiencia del usuario.
 
 ## Normas del Equipo
 - **Comunicación:** Utilizamos Discord para mantenernos actualizados y comunicarnos eficazmente, con un canal dedicado para dudas rápidas y otro para anuncios importantes.
