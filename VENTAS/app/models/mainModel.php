@@ -2,6 +2,11 @@
 	
 	namespace app\models;
 	use \PDO;
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
+
+	// Incluir el autoload de Composer
+	require_once __DIR__ . '/../../vendor/autoload.php';
 
 	if(file_exists(__DIR__."/../../config/server.php")){
 		require_once __DIR__."/../../config/server.php";
@@ -259,6 +264,41 @@
 				return substr($cadena,0,$limite).$sufijo;
 			}else{
 				return $cadena;
+			}
+		}
+
+		/*----------  Funcion enviar correo  ----------*/
+		public function enviarCorreo($destinatario, $asunto, $mensaje) {
+			// Cargar la configuración de SMTP desde el archivo smtp_config.php
+			$smtp_config = require __DIR__ . '/../../config/smtp_config.php';
+
+			// Crear una instancia de PHPMailer
+			$mail = new PHPMailer(true);
+
+			try {
+				// Configuración del servidor SMTP
+				$mail->isSMTP();
+				$mail->Host = $smtp_config['host'];
+				$mail->SMTPAuth = true;
+				$mail->Username = $smtp_config['username'];
+				$mail->Password = $smtp_config['password'];
+				$mail->SMTPSecure = $smtp_config['encryption'];
+				$mail->Port = $smtp_config['port'];
+
+				// Configuración del correo
+				$mail->setFrom($smtp_config['from_email'], $smtp_config['from_name']);
+				$mail->addAddress($destinatario); // Correo del destinatario
+				$mail->isHTML(true); // Permitir HTML en el cuerpo del correo
+				$mail->Subject = $asunto; // Asunto del correo
+				$mail->Body = $mensaje; // Cuerpo del correo
+
+				// Enviar el correo
+				$mail->send();
+				return true; // Envío exitoso
+			} catch (Exception $e) {
+				// Registrar el error en los logs
+				error_log("Error al enviar el correo: " . $mail->ErrorInfo);
+				return false; // Error en el envío
 			}
 		}
 	    
