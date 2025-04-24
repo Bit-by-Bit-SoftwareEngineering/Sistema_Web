@@ -34,11 +34,16 @@
 		                    $intentosModel = new intentosFallidosModel();
 		                    $intentosModel->eliminarIntentosFallidos($usuario_id);
 
-		                    echo '<article class="message is-success">
-		                        <div class="message-body">
-		                            Código verificado. Intenta iniciar sesión nuevamente.
-		                        </div>
-		                    </article>';
+		                    // Guardar el ID del usuario en sesión para el flujo de restablecimiento
+		                    $_SESSION['reset_password_user_id'] = $usuario_id;
+
+		                    // Mostrar el modal de restablecimiento de contraseña
+		                    echo '<script>
+		                        document.addEventListener("DOMContentLoaded", function() {
+		                            const modal = document.getElementById("resetPasswordModal");
+		                            modal.classList.add("is-active");
+		                        });
+		                    </script>';
 		                    return;
 		                } else {
 		                    echo '<article class="message is-danger">
@@ -162,8 +167,34 @@
 				echo "<script> window.location.href='".APP_URL."home/'; </script>";
 				exit();
 			}
+		 }
+
+		/*----------  Controlador restablecer contraseña  ----------*/
+		public function restablecerPasswordControlador() {
+		    if (isset($_POST['new_password'], $_POST['confirm_password'], $_POST['usuario_id'])) {
+		        $new_password = $this->limpiarCadena($_POST['new_password']);
+		        $confirm_password = $this->limpiarCadena($_POST['confirm_password']);
+		        $usuario_id = $this->limpiarCadena($_POST['usuario_id']);
+
+		        if ($new_password === $confirm_password) {
+		            $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+		            $this->ejecutarConsulta("UPDATE usuario SET usuario_clave='$hashed_password' WHERE usuario_id='$usuario_id'");
+
+		            echo '<article class="message is-success">
+		                <div class="message-body">
+		                    Contraseña restablecida con éxito. Ahora puedes iniciar sesión.
+		                </div>
+		            </article>';
+		            unset($_SESSION['reset_password_user_id']); // Limpiar la sesión
+		        } else {
+		            echo '<article class="message is-danger">
+		                <div class="message-body">
+		                    Las contraseñas no coinciden. Intenta nuevamente.
+		                </div>
+		            </article>';
+		        }
+		    }
 		}
-		
 
 	}
 

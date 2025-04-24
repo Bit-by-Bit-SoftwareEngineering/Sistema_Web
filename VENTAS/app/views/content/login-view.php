@@ -1,3 +1,10 @@
+<?php
+// Procesar el formulario de restablecimiento de contraseña
+if (isset($_POST['new_password']) && isset($_POST['confirm_password'])) {
+    $insLogin->restablecerPasswordControlador();
+}
+?>
+
 <div class="main-container">
 
     <div class="container mt-3" style="position: absolute; top: 10px; left: 10px;">
@@ -50,3 +57,40 @@
 
     </form>
 </div>
+
+<div id="resetPasswordModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Restablecer Contraseña</p>
+            <button class="delete" aria-label="close" onclick="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+            <form id="resetPasswordForm" action="?views=resetPassword" method="POST">
+                <div class="field">
+                    <label class="label">Nueva Contraseña</label>
+                    <div class="control">
+                        <input class="input" type="password" name="new_password" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Confirmar Contraseña</label>
+                    <div class="control">
+                        <input class="input" type="password" name="confirm_password" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required>
+                    </div>
+                </div>
+                <input type="hidden" name="usuario_id" value="<?php echo $_SESSION['reset_password_user_id']; ?>">
+                <p class="has-text-centered mt-3">
+                    <button type="submit" class="button is-success">Restablecer Contraseña</button>
+                </p>
+            </form>
+        </section>
+    </div>
+</div>
+
+<script>
+    function closeModal() {
+        const modal = document.getElementById("resetPasswordModal");
+        modal.classList.remove("is-active");
+    }
+</script>
