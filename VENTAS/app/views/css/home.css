@@ -1,0 +1,794 @@
+/* home.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url(../fotos/Fondo.jpg);
+    background-size: cover;
+    background-position: center;  
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1vw; /* Tamaño de fuente dinámico */
+}
+
+body.blur-background {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+    pointer-events: none;
+}
+
+/* Asegúrate de que el contenedor de la imagen ampliada no se vea afectado */
+
+.header {
+    background-image: url(../fotos/banner1.png);
+    background-size: cover;
+    background-position: center;
+    height: 50vh; /* Usa unidades de vista para que la altura sea proporcional a la pantalla */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/*Carrusel de imagenes al inicio*/
+/* Estilos generales para el carrusel */
+.carousel {
+    width: 100%;
+    height: 50vh; /* Altura proporcional a la pantalla */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene las proporciones de la imagen */
+    object-position: center; /* Centra la imagen dentro del contenedor */
+}
+
+.carousel-fade .carousel-item {
+    transition: opacity 1s ease-in-out; /* Añade una transición suave entre imágenes */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Añade un fondo semitransparente a los íconos de navegación */
+    border-radius: 50%;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Oscurece los íconos al pasar el mouse */
+}
+
+/*RECONOCIMIENTOS*/
+/* Estilos para los iconos y textos */
+.recognition-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    opacity: 0; /* Oculta los elementos inicialmente */
+    transform: translateX(-50px); /* Posiciona los elementos fuera de la pantalla */
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.icono-mediano {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+/* Efecto de entrada para la primera fila */
+.row-anim:nth-of-type(1) .recognition-item {
+    animation: slideInLeft 0.6s forwards; /* Animación de entrada desde la izquierda */
+}
+
+.row-anim:nth-of-type(2) .recognition-item {
+    animation: slideInRight 0.6s forwards; /* Animación de entrada desde la derecha */
+}
+
+.row-anim:nth-of-type(3) .recognition-item {
+    animation: slideInLeft 0.6s forwards; /* Animación de entrada desde la izquierda */
+}
+
+/* Definición de las animaciones */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* Estilos para la galería de imágenes */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta automáticamente el número de columnas */
+    gap: 1rem; /* Espaciado entre las tarjetas */
+    margin-top: 2rem;
+}
+
+.gallery .card {
+    border: 2px solid #5061C5;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    height: 200px; /* Altura uniforme para todos los contenedores */
+}
+
+.gallery .card img {
+    max-width: 100%; /* Asegura que las imágenes no excedan el ancho del contenedor */
+    max-height: 100%; /* Asegura que las imágenes no excedan la altura del contenedor */
+    object-fit: contain; /* Mantiene las proporciones de la imagen */
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Reduce el tamaño mínimo de las tarjetas */
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas muy pequeñas */
+    }
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2vw; /* Espaciado dinámico basado en el ancho de la pantalla */
+}
+
+.navbar-nav {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los enlaces se ajusten en pantallas pequeñas */
+    gap: 1rem;
+}
+
+.navbar-brand {
+    font-size: 2vw; /* Tamaño dinámico basado en el ancho de la pantalla */
+    font-weight: bold;
+    color:#00529b;
+    padding: 10px 15px;
+}
+
+.navbar-nav .nav-link {
+    color:#ffd301;
+    margin-right: 15px;
+    font-size: 30px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f6951d;
+    text-decoration: underline; /* Opcional: subrayado en hover */
+}
+
+.cart-icon {
+    font-size: 1.5rem;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+#main-content {
+    margin-top: 20px;
+}
+
+/* Ajuste de las cards para un tamaño uniforme */
+.card {
+    min-height: 400px; /* Altura mínima para las tarjetas */
+    background-color: #BFB6DC;
+    border: 5px solid rgb(80, 97, 197);
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.card-text {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #5061C5;
+    border-color: #5061C5;
+}
+
+.btn-primary:hover {
+    background-color: #5061C5;
+    border-color: #271B7F;
+}
+
+.contact-form {
+    margin-bottom: 30px;
+}
+
+.contact-form h3 {
+    margin-bottom: 15px;
+}
+
+.contact-form form {
+    margin-top: 15px;
+}
+
+/* Estilos para la paginación */
+.pagination .page-item .page-link {
+    color: #191a1b; /* Color de los números de paginación */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #F0EFEA;
+    border-color: #F0EFEA;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #BFB6DC;
+    pointer-events: none;
+}
+
+
+
+/*Carrusel Marcas*/
+/*Carrusel Marcas*/
+#carousel-marcas {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.marcas-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.marcas-carousel-track {
+    display: flex;
+    transition: transform 0.5s linear;
+    will-change: transform;
+}
+
+.marcas-carousel-item {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 100px;
+    margin: 0 10px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.marcas-carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/*imagenes de informacion*/
+.info-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    
+    align-items: center;
+    padding: 40px;
+  }
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 40px;
+    }
+/* Ajusta el espaciado entre columnas 
+.column:not(:last-child) {
+    margin-right: 10px;
+}*/
+  .info-item {
+    flex:1;
+    width: 18%;
+    margin: 0 10px; /* Añade algo de espacio alrededor de cada item */
+    min-width: 150px; /* Asegura que no se colapsen en pantallas pequeñas */
+    text-align: center;
+  }
+  .info-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .info-item h3 {
+    font-size: 16px;
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+  .info-item p {
+    font-size: 14px;
+    color: #666;
+  }
+  .info-item:hover {
+    /*transform: translateY(-10px);*/
+    box-shadow: 0 8px 16px rgba(39, 27, 127, 0.2);
+  }
+
+
+/*promocion 7porciento*/
+.promo-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    gap: 2rem;
+}
+
+.promo-left img {
+    width: 100%;
+    max-width: 300px; /* Limita el tamaño máximo de la imagen */
+    height: auto;
+}
+
+.promo-right {
+    flex: 1;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .promo-section {
+        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
+        text-align: center;
+    }
+
+    .promo-left img {
+        max-width: 100%; /* Ocupa todo el ancho disponible */
+    }
+}
+
+/* Estilos personalizados para el botón */
+.btn-custom {
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    padding: 10px 20px;
+    font-size: 16px;
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.3); /* Sombra del botón */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px); /* Efecto de levantamiento al pasar el mouse */
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4); /* Sombra más pronunciada */
+}
+
+/* Estilos para las redes sociales en la sección de contacto */
+#contactos .btn-primary {
+    background-color: #5061C5;
+    border: none;
+    margin: 5px;
+}
+
+#contactos .btn-primary:hover {
+    background-color: #5061C5;
+}
+/* Estilos adicionales para el formulario de contacto */
+.contact-form input, .contact-form textarea {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+/*.contact-form button {
+    background-color: #007bff;
+    border: none;
+}*/
+
+.contact-form button:hover {
+    background-color: #5061C5;
+}
+
+
+  
+
+/*Seccion Contacto*/
+/* Estilos generales para la sección de contacto */
+#contactos {
+    background-color: #f9f9f9;
+    padding: 20px 0;
+    border-radius: 8px;
+}
+
+h2, h3 {
+    color: #333;
+    font-weight: bold;
+}
+
+.contact-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes para los campos de texto */
+.input-square {
+    border-radius: 8px; /* Cambia el radio del borde para que sea más cuadrado */
+    padding: 10px;
+    font-size: 16px;
+    height: 45px; /* Ajusta la altura para que sea más compacto */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera para los inputs */
+    border: 4px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.input-square:focus {
+    border-color: #5061C5; /* Color de borde cuando se selecciona el campo */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Brillo en el foco */
+}
+
+/* Estilos personalizados para el botón */
+.btn-custom {
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    padding: 10px 20px;
+    font-size: 16px;
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.3); /* Sombra del botón */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px); /* Efecto de levantamiento al pasar el mouse */
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4); /* Sombra más pronunciada */
+}
+
+.social-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9; 
+    border: none;
+  }
+
+  .social-buttons {
+    display: flex;
+    gap: 20px;
+    border: none;
+  }
+
+  .social-buttons a {
+    padding: 15px 30px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    display: inline-block; /* Asegura que se comporte como botón */
+    border: 2px solid transparent; /* Borde inicial */
+    transition: background-color 0.3s, border-color 0.3s; /* Transiciones */
+  }
+
+  .btn-facebook {
+    background-color: #271B7F;
+  }
+
+  .btn-instagram {
+    background-color: #5061C5;
+  }
+
+  .btn-twitter {
+    background-color: #F3D408;
+  }
+
+  .btn-youtube {
+    background-color: #3D853C;
+  }
+
+  /* Efecto de hover para cambiar ligeramente el tono y agregar borde */
+  .btn-facebook:hover {
+    background-color: #2d4373;
+    border-color: #3b5998;
+  }
+
+  .btn-twitter:hover {
+    background-color: #dfee12;
+    border-color: #dfee12;
+  }
+
+  .btn-instagram:hover {
+    background-color: #1991db;
+    border-color: #1da1f2;
+  }
+
+  .btn-youtube:hover {
+    background-color: #198b02;
+    border-color: #198b02;
+  }
+
+
+/* Ajuste de mapa */
+#map iframe {
+    border-radius: 10px;
+}
+
+
+/* Estilos para ajustar el mapa */
+#map {
+    margin-top: 20px;
+    border: 3px solid #5061C5; /* Borde del mapa */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.container {
+    padding: 2vw; /* Espaciado dinámico basado en el ancho de la pantalla */
+}
+
+footer {
+    background-color: #3586ff; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 2rem 1rem; /* Espaciado interno */
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center; /* Centra el texto */
+    gap: 1rem; /* Espaciado entre los elementos */
+    margin-top: 2rem; /* Margen superior para separarlo del contenido anterior */
+}
+
+footer .rrss_icon {
+    display: flex;
+    justify-content: center; /* Centra los íconos horizontalmente */
+    gap: 1rem; /* Espaciado entre íconos */
+}
+
+footer .rrss_icon li {
+    list-style: none;
+}
+
+footer .rrss_icon li a {
+    color: #fff;
+    font-size: 1.5rem; /* Tamaño de los íconos */
+    transition: transform 0.3s ease;
+}
+
+footer .rrss_icon li a:hover {
+    transform: scale(1.2); /* Efecto de zoom al pasar el mouse */
+}
+
+footer .menu_footer {
+    display: flex;
+    justify-content: center; /* Centra los enlaces horizontalmente */
+    gap: 1rem; /* Espaciado entre enlaces */
+    flex-wrap: wrap; /* Permite que los enlaces se ajusten en pantallas pequeñas */
+}
+
+footer .menu_footer li {
+    list-style: none;
+}
+
+footer .menu_footer li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+footer .menu_footer li a:hover {
+    color: #ffcc00; /* Cambia el color al pasar el mouse */
+}
+
+footer p {
+    grid-column: span 2; /* Ocupa ambas columnas */
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    footer {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    }
+
+    footer p {
+        grid-column: span 1; /* Ajusta el texto a una sola columna */
+    }
+}
+
+.vision-mision-section {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.card-vis-mis {
+    flex: 1;
+    max-width: 45%; /* Limita el ancho de las tarjetas */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-vis-mis:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-vis-mis-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-vis-mis h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.card-vis-mis p {
+    font-size: 16px;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .vision-mision-section {
+        flex-direction: column; /* Apila las tarjetas en pantallas pequeñas */
+        align-items: center;
+    }
+
+    .card-vis-mis {
+        max-width: 90%; /* Ocupa casi todo el ancho en pantallas pequeñas */
+    }
+}
+
+#perfumes {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten automáticamente */
+    justify-content: space-between; /* Espaciado uniforme entre los elementos */
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 40vh; /* Reduce la altura en pantallas pequeñas */
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem; /* Tamaño fijo para pantallas pequeñas */
+    }
+
+    .navbar-nav {
+        flex-direction: column; /* Apila los enlaces en pantallas pequeñas */
+        align-items: center;
+    }
+
+    .carousel {
+        height: 40vh; /* Reduce la altura en pantallas pequeñas */
+    }
+
+    .card-img-top {
+        height: 150px; /* Reduce la altura de las imágenes en pantallas pequeñas */
+    }
+}
+
+/* Calendar Section */
+.calendar-container {
+    display: grid;
+    grid-template-rows: auto auto; /* Dos filas: una para los días y otra para las ofertas */
+    gap: 1rem; /* Espaciado entre filas */
+    text-align: center;
+    margin: 20px 0;
+}
+
+.calendar-header, .calendar-body {
+    grid-template-columns: repeat(6, 1fr); /* Cambiar de 7 a 6 columnas */
+}
+
+.calendar-header {
+    display: grid;
+    background-color: #e6e6fa; /* Color de fondo para los días */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.calendar-day {
+    font-weight: bold;
+    color: #333;
+    padding: 5px;
+}
+
+.calendar-body {
+    display: grid;
+    gap: 1rem; /* Espaciado entre las ofertas */
+}
+
+.calendar-offer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #333;
+    border-radius: 8px;
+    height: 100px; /* Altura fija para las ofertas */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-offer p {
+    display: none; /* Oculta el texto debajo de las imágenes */
+}
+
+.calendar-offer img {
+    cursor: pointer; /* Cambia el cursor para indicar que la imagen es interactiva */
+    transition: transform 0.3s ease; /* Transición suave para el zoom */
+}
+
+.calendar-offer img.enlarged {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5); /* Aumenta el tamaño un 50% */
+    z-index: 1050; /* Asegura que esté por encima del modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar la imagen */
+    background-color: white;
+    border-radius: 10px;
+    max-width: 60vw; /* Limita el ancho máximo al 90% del ancho de la ventana */
+    max-height: 60vh; /* Limita la altura máxima al 90% de la altura de la ventana */
+    transition: transform 0.3s ease; /* Transición suave */
+}
