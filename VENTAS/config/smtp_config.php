@@ -2,10 +2,10 @@
 // filepath: c:\xampp\htdocs\VENTAS\config\smtp_config.php
 return [
     'host' => 'smtp.gmail.com',
-    'username' => 'andyurqui1806@gmail.com', // Tu correo de Gmail
-    'password' => 'hqhevbmeuupznbez',       // Contraseña de aplicación generada
+    'username' => 'farmaciavidasana101@gmail.com', // cuenta de Gmail
+    'password' => 'vnkm iovy nbps arf',           // contraseña de aplicación
     'port' => 587,
     'encryption' => 'tls',
-    'from_email' => 'andyurqui1806@gmail.com', // Tu correo de Gmail
-    'from_name' => 'FarmaVida'                // Nombre del sistema
+    'from_email' => 'farmaciavidasana101@gmail.com', // cuenta de Gmail
+    'from_name' => 'FarmaVida'                    // Nombre del sistema
 ];

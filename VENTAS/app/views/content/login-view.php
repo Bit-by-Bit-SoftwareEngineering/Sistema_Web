@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION['intentos_fallidos'])) {
+    $_SESSION['intentos_fallidos'] = 0;
+}
+
 // Procesar el formulario de restablecimiento de contraseña
 if (isset($_POST['new_password']) && isset($_POST['confirm_password'])) {
     $insLogin->restablecerPasswordControlador();
@@ -66,7 +70,7 @@ if (isset($_POST['new_password']) && isset($_POST['confirm_password'])) {
             <button class="delete" aria-label="close" onclick="closeModal()"></button>
         </header>
         <section class="modal-card-body">
-            <form id="resetPasswordForm" action="?views=resetPassword" method="POST">
+            <form id="resetPasswordForm" action="" method="POST">
                 <div class="field">
                     <label class="label">Nueva Contraseña</label>
                     <div class="control">

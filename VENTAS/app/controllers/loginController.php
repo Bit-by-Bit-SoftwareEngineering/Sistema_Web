@@ -130,6 +130,7 @@
 
 		        // Actualizar la variable de sesión
 		        $_SESSION['intentos_fallidos'] = $intentos;
+		        var_dump($_SESSION['intentos_fallidos']); // Depuración
 		    } else {
 		        // Crear un nuevo registro de intentos fallidos
 		        $intentosModel->crearIntentoFallido($usuario_id);
