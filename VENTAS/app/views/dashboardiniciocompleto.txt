@@ -34,19 +34,19 @@
 		<div class="column">
 			<nav class="level is-mobile">
 			  	<div class="level-item has-text-centered">
-				    <a>
+				    <a href="<?php echo APP_URL; ?>cashierList/">
 				      	<p class="heading"><i class="fas fa-cash-register fa-fw"></i> &nbsp; Cajas</p>
 				      	<p class="title"><?php echo $total_cajas->rowCount(); ?></p>
 				    </a>
 			  	</div>
 			  	<div class="level-item has-text-centered">
-			    	<a>
+			    	<a href="<?php echo APP_URL; ?>userList/">
 			      		<p class="heading"><i class="fas fa-users fa-fw"></i> &nbsp; Usuarios</p>
 			      		<p class="title"><?php echo $total_usuarios->rowCount(); ?></p>
 			    	</a>
 			  	</div>
 			  	<div class="level-item has-text-centered">
-				    <a>
+				    <a href="<?php echo APP_URL; ?>clientList/">
 				      	<p class="heading"><i class="fas fa-address-book fa-fw"></i> &nbsp; Clientes</p>
 				      	<p class="title"><?php echo $total_clientes->rowCount(); ?></p>
 				    </a>
@@ -59,19 +59,19 @@
 		<div class="column">
 			<nav class="level is-mobile">
 				<div class="level-item has-text-centered">
-				    <a>
+				    <a href="<?php echo APP_URL; ?>categoryList/">
 				      <p class="heading"><i class="fas fa-tags fa-fw"></i> &nbsp; Categorías</p>
 				      <p class="title"><?php echo $total_categorias->rowCount(); ?></p>
 				    </a>
 			  	</div>
 			  	<div class="level-item has-text-centered">
-				    <a>
+				    <a href="<?php echo APP_URL; ?>productList/">
 				      	<p class="heading"><i class="fas fa-cubes fa-fw"></i> &nbsp; Productos</p>
 				      	<p class="title"><?php echo $total_productos->rowCount(); ?></p>
 				    </a>
 			  	</div>
 			  	<div class="level-item has-text-centered">
-			    	<a>
+			    	<a href="<?php echo APP_URL; ?>saleList/">
 			      		<p class="heading"><i class="fas fa-shopping-cart fa-fw"></i> &nbsp; Ventas</p>
 			      		<p class="title"><?php echo $total_ventas->rowCount(); ?></p>
 			    	</a>
