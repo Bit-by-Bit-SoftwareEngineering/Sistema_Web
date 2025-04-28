@@ -5,33 +5,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="app/views/css/home.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">FarmaVida</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#nosotros">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#perfumes">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contactos">Contáctanos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="?views=login">Login</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="cart-icon" data-bs-toggle="modal" data-bs-target="#cartModal">
-                            <i class="fas fa-shopping-cart"></i> Carrito (<span id="cart-count">0</span>)
-                        </a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">FarmaVida</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#nosotros">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#perfumes">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contactos">Contáctanos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary text-white my-2" href="?views=login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link my-2" href="#" id="cart-icon" data-bs-toggle="modal" data-bs-target="#cartModal">
+                                <i class="fas fa-shopping-cart"></i> Carrito (<span id="cart-count">0</span>)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -123,8 +128,10 @@
     </div>
 
     <div id="main-content" class="container mt-5 pt-5">
-        <h1>Bienvenido a FarmaVida</h1>
-        <p>¡Compra lo que necesites las 24 horas del día!</p>
+        <h1>Bienvenido a FarmaVida</h11.5
+        <p style="font-size: 2rem; font-weight: bold; text-align: left; color: #333; margin: 20px 0;">
+            ¡Compra lo que necesites las 24 horas del día!
+        </p>
 
         <h2 id="nosotros">Nuestra tienda y lo más importante nuestros clientes</h2>
 
@@ -153,17 +160,40 @@
         
                 <!-- Sección de Visión y Misión -->
                 <section class="vision-mision-section">
-            <div class="card-vis-mis">
-                <div class="card-content">
-                    <h3>Visión</h3>
-                    <p>“Ser la farmacia de referencia en el barrio, reconocida por nuestra atención cercana, confiabilidad y compromiso con la salud de nuestros vecinos.”.</p>
-                </div>
+                    <div class="card-vis-mis">
+                        <div class="card-content">
+                            <h3 style="font-size: 1.5rem; font-weight: bold; text-align: center; margin-bottom: 10px; color: #333;">
+                                Visión
+                            </h3>
+                            <p style="font-size: 1rem; line-height: 1.5; text-align: justify; color: #666; margin-bottom: 15px;">
+                                “Ser la farmacia de referencia en el barrio, reconocida por nuestra atención cercana, confiabilidad y compromiso con la salud de nuestros vecinos.”
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-vis-mis">
+                        <div class="card-content">
+                            <h3 style="font-size: 1.5rem; font-weight: bold; text-align: center; margin-bottom: 10px; color: #333;">
+                                Misión
+                            </h3>
+                            <p style="font-size: 1rem; line-height: 1.5; text-align: justify; color: #666; margin-bottom: 15px;">
+                                “Somos FarmaVida, trabajamos unidos generando experiencias memorables que ayudan a las familias a llevar una vida feliz y saludable. Proveer medicamentos y productos de salud de alta calidad, ofreciendo un servicio personalizado y accesible para mejorar el bienestar de nuestra comunidad.”
+                            </p>
+                        </div>
+                    </div>
+                </section>
+        <!-- Sección del Logo con animación al hacer scroll -->
+        <section class="logo-section my-5">
+            <div class="logo-container">
+                <img src="./app/views/fotos/logo.png" alt="Logo FarmaVida" class="logo-animado" id="logoAnimado">
             </div>
-            <div class="card-vis-mis">
-                <div class="card-content">
-                    <h3>Misión</h3>
-                    <p>“Somos FarmaVida,trabajamos unidos generando experiencias memorables que ayudan a las familias a llevar una vida feliz y saludable Proveer medicamentos y productos de salud de alta calidad, ofreciendo un servicio personalizado y accesible para mejorar el bienestar de nuestra comunidad.”.</p>
-                </div>
+        </section>        
+
+        <!-- Sección de Slogan con animación -->
+        <section class="slogan-section my-4">
+            <div class="slogan-container">
+                <span class="slogan-text">
+                    Cuidamos de ti y de tu familia, <span class="slogan-highlight">siempre cerca</span>, <span class="slogan-highlight">siempre confiables</span>.
+                </span>
             </div>
         </section>
 
@@ -174,8 +204,12 @@
             </div>
             <div class="promo-right">
                 <h2>Descuentos en FarmaVida</h2>
-                <p>¡Llegó el momento de ahorrar!</p>
-                <a href="" id="openCalendarModal" data-bs-toggle="modal" data-bs-target="#calendarModal">Abrir Calendario</a>
+                <p style="font-size: 2.5vw; font-weight: bold; text-align: center; color: #333; margin: 20px 0;">
+                    ¡Llegó el momento de ahorrar!
+                </p>
+                <a href="" id="openCalendarModal" data-bs-toggle="modal" data-bs-target="#calendarModal" style="font-size: 1.5vw;">
+                    Abrir Calendario
+                </a>
             </div>
         </section>
 
@@ -261,10 +295,11 @@
                                 <img src="./app/views/img/productos/default.jpg" class="card-img-top" alt="Foto del producto">
                             <?php endif; ?>
                             <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($product['producto_nombre']) ?></h5>
-                                <p class="card-text"><strong>Marca: </strong> <?= htmlspecialchars($product['producto_marca']) ?></p>
-                                <p class="card-text"><strong>Modelo: </strong> <?= htmlspecialchars($product['producto_modelo']) ?></p>
-                                <p class="card-text"><strong>Precio: </strong><?= number_format((float)$product['producto_precio_venta'], 2, '.', '') ?> Bs</p>
+                                <h5 class="card-title" style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #333;"><?= htmlspecialchars($product['producto_nombre']) ?></h5>
+                                <p class="card-text" style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #333;"><strong>Marca: </strong> <?= htmlspecialchars($product['producto_marca']) ?></p>
+                                <p class="card-text" style="font-size: 1rem; color: #666; margin-bottom: 10px;"><strong>Modelo: </strong> <?= htmlspecialchars($product['producto_modelo']) ?></p>
+                                <p class="card-text" style="font-size: 1rem; color: #666; margin-bottom: 10px;"><strong>Presentacion: </strong> <?= htmlspecialchars($product['producto_modelo']) ?></p>
+                                <p class="card-text" style="font-size: 1rem; color: #666; margin-bottom: 10px;" ><strong>Precio: </strong><?= number_format((float)$product['producto_precio_venta'], 2, '.', '') ?> Bs</p>
                                 <button class="btn btn-primary add-to-cart-btn" data-product-id="<?= $product['producto_id'] ?>" 
                                         data-product-name="<?= htmlspecialchars($product['producto_nombre']) ?>"
                                         data-product-price="<?= number_format((float)$product['producto_precio_venta'], 2, '.', '') ?>">
@@ -393,7 +428,7 @@
       <div class="col-md-6">
         <div class="contact-form">
           <h3>Formulario de Contacto</h3>
-          <form action="contact_form_handler.php" method="post">
+          <form id="contactForm" action="/VENTAS/app/views/content/contact_form_handler.php" method="post">
             <div class="mb-3">
               <label for="name" class="form-label">Nombre</label>
               <input type="text" class="form-control input-square" id="name" name="name" required>
@@ -430,64 +465,75 @@
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/1.jpeg" alt="1">
+                    <figcaption class="gallery-caption">Variedad de Analgesicos, de diferentes laboratorios</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/2.jpeg" alt="2">
+                    <figcaption class="gallery-caption">Corticoides para dolores musculares</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/3.png" alt="3">
+                    <figcaption class="gallery-caption">shampoos para infantes</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/4.jpg" alt="4">
+                    <figcaption class="gallery-caption">Pañales</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/5.jpg" alt="5">
+                    <figcaption class="gallery-caption">Chupones</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/8.jpg" alt="6">
+                    <figcaption class="gallery-caption">Enjuage Bucal</figcaption>
                 </figure>
             </div>
-
         </div>
         <div class="gallery">
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/10.jpg" alt="10">
+                    <figcaption class="gallery-caption">Agua para desmaquillarse</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/11.jpg" alt="11">
+                    <figcaption class="gallery-caption">Crema de cara Elvive</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/12.jpg" alt="12">
+                    <figcaption class="gallery-caption">Paracetamol Laboratorio Chile</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/13.jpg" alt="13">
+                    <figcaption class="gallery-caption">Ibuprofeno en Jarabe</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/14.jpg" alt="14">
+                    <figcaption class="gallery-caption">Papel Higienico</figcaption>
                 </figure>
             </div>
             <div class="card">
                 <figure>
                     <img src="app/views/img/galeria/15.jpg" alt="15">
+                    <figcaption class="gallery-caption">Ambientador de Baño</figcaption>
                 </figure>
             </div>
         </div>
@@ -519,18 +565,11 @@
      </footer>
      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <!-- <footer class="bg-light text-center py-3">
-        <div class="container">
-            <p>&copy; 2024 FarmaVida. Todos los derechos reservados.</p>
-            <a href="https://es-la.facebook.com/FarmaVida/"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/FarmaVidasa/?hl=es-la"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/i/flow/login?redirect_after_login=%2FFarmaVidasa"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.youtube.com/channel/UCOJ9GruTDv968_qfiGYe2Fg?view_as=subscriber"><i class="fab fa-youtube"></i></a>
-        </div>
-    </footer> -->
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -786,7 +825,71 @@
                 openCalendarModal.focus();
             });
         });
+
+        // ...otros scripts...
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const logo = document.getElementById('logoAnimado');
+            if ('IntersectionObserver' in window && logo) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            logo.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.5 });
+                observer.observe(logo);
+            } else if (logo) {
+                // Fallback: mostrar el logo si no hay IntersectionObserver
+                logo.classList.add('visible');
+            }
+        });
+
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(text => {
+            // Busca si el texto contiene "Mensaje enviado correctamente"
+            if (text.includes('Mensaje enviado correctamente')) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Mensaje enviado!',
+                    text: 'Tu mensaje fue enviado correctamente. Pronto nos pondremos en contacto contigo.',
+                    confirmButtonColor: '#3085d6'
+                });
+                form.reset();
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al enviar el mensaje. Intenta nuevamente.',
+                    confirmButtonColor: '#d33'
+                });
+            }
+        })
+        .catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo conectar con el servidor.',
+                confirmButtonColor: '#d33'
+            });
+        });
+    });
+});
+</script>
 
 </body>
 </html>

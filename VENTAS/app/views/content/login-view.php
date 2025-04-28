@@ -19,7 +19,9 @@ if (isset($_POST['new_password']) && isset($_POST['confirm_password'])) {
 
     <form class="box login" action="" method="POST" autocomplete="off">
         <p class="has-text-centered">
-            <i class="fas fa-user-circle fa-5x"></i>
+            <span style="display: inline-block; border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08); width: 110px; height: 110px;">
+                <img src="./app/views/fotos/logo.png" alt="Logo FarmaVida" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            </span>
         </p>
         <h5 class="title is-5 has-text-centered">Inicia sesión con tu cuenta</h5>
 

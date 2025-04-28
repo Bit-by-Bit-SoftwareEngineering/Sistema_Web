@@ -1,5 +1,126 @@
 /* home.css */
 
+/* Estilos para el carrito */
+#metodoPago {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#metodoPago .form-check {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+}
+
+/* Estilos para el logo y el eslogan */
+.logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 320px; /* Más alto para imágenes grandes */
+    background: linear-gradient(90deg, #e0f7fa 0%, #fff 100%);
+    border-radius: 30px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    margin-bottom: 2rem;
+    padding: 2vw 0; /* Espaciado vertical adaptable */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    padding: 0;
+}
+
+.logo-animado {
+    width: 420px;
+    max-width: 95vw;
+    height: auto;
+    opacity: 0;
+    transform: scale(0.7) translateY(60px);
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    will-change: opacity, transform;
+    display: block;
+    margin: 0 auto;
+}
+
+.logo-animado.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+@media (max-width: 768px) {
+    .logo-animado {
+        width: 70vw;
+        max-width: 95vw;
+    }
+    .logo-section {
+        min-height: 180px;
+        padding: 4vw 0;
+    }
+}
+
+/* Sección de eslogan */
+
+.slogan-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90px;
+    background: linear-gradient(90deg, #e0f7fa 0%, #fff 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    margin-bottom: 2rem;
+    animation: fadeInSlogan 1.2s ease;
+}
+
+@keyframes fadeInSlogan {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.slogan-container {
+    padding: 18px 32px;
+    text-align: center;
+}
+
+.slogan-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00796b;
+    letter-spacing: 1px;
+    display: inline-block;
+    background: linear-gradient(90deg, #26c6da 30%, #43e97b 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: sloganGradient 3s linear infinite alternate;
+}
+
+@keyframes sloganGradient {
+    0% { background-position: 0% 50%;}
+    100% { background-position: 100% 50%;}
+}
+
+.slogan-highlight {
+    color: #ff9800;
+    background: none;
+    -webkit-text-fill-color: #ff9800;
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { text-shadow: 0 0 0px #ff9800;}
+    100% { text-shadow: 0 0 12px #ff9800;}
+}
+/* ...existing code... */
 html, body {
     height: 100%;
     margin: 0;
@@ -14,6 +135,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 1vw; /* Tamaño de fuente dinámico */
+    padding-top: 70px;
 }
 
 body.blur-background {
@@ -34,6 +156,7 @@ body.blur-background {
     justify-content: center;
     margin-bottom: 20px;
     text-align: center;
+    
 }
 
 /*Carrusel de imagenes al inicio*/
@@ -158,6 +281,15 @@ body.blur-background {
     object-fit: contain; /* Mantiene las proporciones de la imagen */
 }
 
+.gallery-caption {
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
 @media (max-width: 768px) {
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Reduce el tamaño mínimo de las tarjetas */
@@ -212,11 +344,33 @@ body.blur-background {
     margin-top: 20px;
 }
 
+/* Estilo para el texto de bienvenida */
+#main-content p {
+    font-size: 20rem; /* Tamaño de fuente inicial */
+    font-weight: bold; /* Hace el texto más destacado */
+    text-align: center; /* Centra el texto */
+    color: #333; /* Color del texto */
+    margin: 20px 0; /* Espaciado superior e inferior */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    #main-content p {
+        font-size: 1.5rem; /* Reduce el tamaño en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 576px) {
+    #main-content p {
+        font-size: 1.2rem; /* Reduce aún más el tamaño en pantallas muy pequeñas */
+    }
+}
+
 /* Ajuste de las cards para un tamaño uniforme */
 .card {
     min-height: 400px; /* Altura mínima para las tarjetas */
     background-color: #BFB6DC;
-    border: 5px solid rgb(80, 97, 197);
+    border: 2px solid rgb(80, 97, 197);
     border-radius: 25px;
     overflow: hidden;
     display: flex;
@@ -238,8 +392,18 @@ body.blur-background {
     color: white;
 }
 
+.card-title {
+    font-size: 1.2rem; /* Tamaño del título */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 10px; /* Espaciado inferior */
+    color: #333; /* Color del texto */
+}
+
 .card-text {
-    color: white;
+    
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px; 
 }
 
 .btn-primary {
@@ -433,17 +597,11 @@ body.blur-background {
     border: 1px solid #ced4da;
 }
 
-/*.contact-form button {
-    background-color: #007bff;
-    border: none;
-}*/
+
 
 .contact-form button:hover {
     background-color: #5061C5;
 }
-
-
-  
 
 /*Seccion Contacto*/
 /* Estilos generales para la sección de contacto */

@@ -3,7 +3,7 @@
 return [
     'host' => 'smtp.gmail.com',
     'username' => 'farmaciavidasana101@gmail.com', // cuenta de Gmail
-    'password' => 'vnkm iovy nbps arf',           // contraseña de aplicación
+    'password' => 'sadyyjeujszndxau',           // contraseña de aplicación
     'port' => 587,
     'encryption' => 'tls',
     'from_email' => 'farmaciavidasana101@gmail.com', // cuenta de Gmail
