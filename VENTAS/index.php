@@ -46,7 +46,15 @@ if ($vistaSolicitada === "home") {
 } elseif ($vista === "login" || $vista === "404") {
     // Si la vista es login o 404, cargar esas vistas específicas
     require_once "./app/views/content/" . $vista . "-view.php";
-} else {
+} 
+// --- CAMBIO PARA DASHBOARD ---
+elseif ($vistaSolicitada === "Dashboards1") {
+    $dashboard = new \app\controllers\dashboardController();
+    $dashboard->mostrarDashboard1();
+    exit();
+}
+// --- FIN CAMBIO ---
+else {
     // Cargar el sistema después del login
     ?>
 

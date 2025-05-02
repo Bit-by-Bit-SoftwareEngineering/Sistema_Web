@@ -299,6 +299,15 @@ class PedidoController extends mainModel{
         echo '</tr>';
         echo '</table>';
     }
+
+    public function obtenerTodosLosPedidos() {
+        $sql = $this->ejecutarConsulta("
+            SELECT pedido_id, codigo_pedido, fecha, nombre_cliente, correo_cliente, celular_cliente, estado, metodo_pago
+            FROM pedido
+            ORDER BY fecha DESC
+        ");
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
     
 
 }

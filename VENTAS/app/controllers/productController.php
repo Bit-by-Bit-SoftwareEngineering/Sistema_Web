@@ -1143,7 +1143,29 @@
 			// Asumiendo que productModel también extiende mainModel
 			$model = new productModel();
 			return $model->obtenerProductoPorId($id);
+			}
+
+		// Método para obtener stock por categoría
+		public function obtenerStockPorCategoria() {
+			$sql = $this->ejecutarConsulta("
+				SELECT c.categoria_nombre, SUM(p.producto_stock_total) as stock
+				FROM producto p
+				INNER JOIN categoria c ON p.categoria_id = c.categoria_id
+				GROUP BY c.categoria_id
+				ORDER BY stock DESC
+			");
+			return $sql->fetchAll(\PDO::FETCH_ASSOC);
 		}
 
+		// Método para obtener todos los productos
+		public function obtenerTodosLosProductos() {
+			$sql = $this->ejecutarConsulta("
+				SELECT p.producto_id, p.producto_codigo, p.producto_nombre, p.producto_stock_total, p.producto_precio_venta, c.categoria_nombre
+				FROM producto p
+				INNER JOIN categoria c ON p.categoria_id = c.categoria_id
+				ORDER BY p.producto_nombre ASC
+			");
+			return $sql->fetchAll(\PDO::FETCH_ASSOC);
+		}
 			
 	}
