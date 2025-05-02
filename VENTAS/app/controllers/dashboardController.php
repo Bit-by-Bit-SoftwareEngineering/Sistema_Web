@@ -4,7 +4,7 @@ namespace app\controllers;
 
 class dashboardController {
 
-    public function mostrarDashboard1() {
+    public function mostrarDashboard1($soloVariables = false) {
         // Instanciar controladores
         $saleCtrl = new \app\controllers\saleController();
         $productCtrl = new \app\controllers\productController();
@@ -33,8 +33,8 @@ class dashboardController {
         $totalProductos = count($productos);
         $totalPedidos = count($pedidos);
 
-        // Hacer disponibles todas las variables en la vista
-        extract([
+        // Hacer disponibles todas las variables en el scope global
+        foreach ([
             'ventasPorPeriodo' => $ventasPorPeriodo,
             'productosMasVendidos' => $productosMasVendidos,
             'clientesPorPeriodo' => $clientesPorPeriodo,
@@ -48,8 +48,13 @@ class dashboardController {
             'totalClientes' => $totalClientes,
             'totalProductos' => $totalProductos,
             'totalPedidos' => $totalPedidos
-        ]);
+        ] as $k => $v) {
+            $GLOBALS[$k] = $v;
+        }
 
-        require_once './app/views/content/Dashboards1-view.php';
+        // NO incluyas la vista aquí si $soloVariables es true
+        if (!$soloVariables) {
+            require_once './app/views/content/Dashboards1-view.php';
+        }
     }
 }
