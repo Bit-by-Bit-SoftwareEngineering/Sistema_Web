@@ -174,6 +174,37 @@ CREATE TABLE `venta_detalle` (
   `producto_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+
+--
+-- Estructura de tabla para la tabla `detalle_pedido`
+--
+
+CREATE TABLE `detalle_pedido` (
+  `detalle_id` int(11) NOT NULL,
+  `codigo_pedido` varchar(100) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `producto_nombre` varchar(100) DEFAULT NULL,
+  `precio` decimal(10,2) DEFAULT NULL,
+  `fecha` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Estructura de tabla para la tabla `pedido`
+--
+
+CREATE TABLE `pedido` (
+  `pedido_id` int(11) NOT NULL,
+  `codigo_pedido` varchar(100) NOT NULL,
+  `fecha` datetime DEFAULT current_timestamp(),
+  `nombre_cliente` varchar(100) DEFAULT NULL,
+  `correo_cliente` varchar(100) DEFAULT NULL,
+  `celular_cliente` varchar(20) DEFAULT NULL,
+  `estado` enum('pendiente','comprobado','completado') DEFAULT 'pendiente',
+  `metodo_pago` varchar(100) DEFAULT NULL,
+  `razon_social` varchar(100) DEFAULT NULL,
+  `nit_cliente` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -235,6 +266,20 @@ ALTER TABLE `venta_detalle`
   ADD KEY `producto_id` (`producto_id`);
 
 --
+-- Indices de la tabla `detalle_pedido`
+--
+ALTER TABLE `detalle_pedido`
+  ADD PRIMARY KEY (`detalle_id`),
+  ADD KEY `codigo_pedido` (`codigo_pedido`);
+
+--
+-- Indices de la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  ADD PRIMARY KEY (`pedido_id`),
+  ADD UNIQUE KEY `codigo_pedido` (`codigo_pedido`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -263,10 +308,22 @@ ALTER TABLE `empresa`
   MODIFY `empresa_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `detalle_pedido`
+--
+ALTER TABLE `detalle_pedido`
+  MODIFY `detalle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
   MODIFY `producto_id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  MODIFY `pedido_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
