@@ -4,15 +4,18 @@ namespace app\controllers;
 
 class dashboardController {
 
-    public function mostrarDashboard1($soloVariables = false) {
+    // Ahora acepta el periodo como argumento
+    public function mostrarDashboard1($soloVariables = false, $periodo = null) {
         // Instanciar controladores
         $saleCtrl = new \app\controllers\saleController();
         $productCtrl = new \app\controllers\productController();
         $clientCtrl = new \app\controllers\clientController();
         $pedidoCtrl = new \app\controllers\PedidoController();
 
-        // Filtro de periodo (GET o por defecto 'mes')
-        $periodo = isset($_GET['periodo']) ? $_GET['periodo'] : 'mes';
+        // Filtro de periodo (por argumento o por defecto 'mes')
+        if ($periodo === null) {
+            $periodo = isset($_GET['periodo']) ? $_GET['periodo'] : 'mes';
+        }
 
         // Datos para gráficos
         $ventasPorPeriodo = $saleCtrl->obtenerVentasPorPeriodo($periodo);
