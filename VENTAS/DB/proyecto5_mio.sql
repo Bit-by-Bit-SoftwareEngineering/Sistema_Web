@@ -581,6 +581,18 @@ CREATE TABLE `venta_detalle` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
+-- Estructura de tabla intentos_fallidos 
+CREATE TABLE `intentos_fallidos` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `usuario_id` INT NOT NULL,
+  `codigo_verificacion` VARCHAR(6) DEFAULT NULL,
+  `intentos` INT DEFAULT 0,
+  `fecha_hora` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `estado` ENUM('pendiente', 'verificado', 'expirado') DEFAULT 'pendiente',
+  FOREIGN KEY (`usuario_id`) REFERENCES `usuario`(`usuario_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
 -- Índices para tablas volcadas
 --
 

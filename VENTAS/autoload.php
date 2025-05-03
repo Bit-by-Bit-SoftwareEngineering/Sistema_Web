@@ -1,4 +1,6 @@
 <?php
+    // Incluir el autoload de Composer
+    require_once __DIR__ . '/vendor/autoload.php';
 
     spl_autoload_register(function($clase){
 

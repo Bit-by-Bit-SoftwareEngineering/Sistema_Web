@@ -1078,6 +1078,138 @@
 		    }
 
 		    return json_encode($alerta);
+		    
+		}
+
+		/*---------- Controlador obtener ventas por periodo ----------*/
+		public function obtenerVentasPorPeriodo($periodo = 'mes') {
+		    switch ($periodo) {
+		        case 'semana':
+		            $group = "YEARWEEK(venta_fecha, 1)";
+		            $label = "CONCAT(YEAR(venta_fecha), '-W', WEEK(venta_fecha, 1))";
+		            break;
+		        case 'bimestre':
+		            $group = "CONCAT(YEAR(venta_fecha), '-', LPAD(FLOOR((MONTH(venta_fecha)-1)/2)+1,2,'0'))";
+		            $label = $group;
+		            break;
+		        case 'trimestre':
+		            $group = "CONCAT(YEAR(venta_fecha), '-T', QUARTER(venta_fecha))";
+		            $label = $group;
+		            break;
+		        case 'semestre':
+		            $group = "CONCAT(YEAR(venta_fecha), '-S', IF(MONTH(venta_fecha)<=6,1,2))";
+		            $label = $group;
+		            break;
+		        case 'anual':
+		            $group = "YEAR(venta_fecha)";
+		            $label = $group;
+		            break;
+		        case 'mes':
+		        default:
+		            $group = "DATE_FORMAT(venta_fecha, '%Y-%m')";
+		            $label = $group;
+		            break;
+		    }
+		    $sql = $this->ejecutarConsulta("
+		        SELECT $label as periodo, SUM(venta_total) as total
+		        FROM venta
+		        GROUP BY $group
+		        ORDER BY periodo ASC
+		    ");
+		    return $sql->fetchAll(\PDO::FETCH_ASSOC);
+		}
+
+		/*---------- Controlador obtener productos más vendidos por periodo ----------*/
+		public function obtenerProductosMasVendidosPorPeriodo($periodo = 'mes', $limite = 10) {
+		    switch ($periodo) {
+		        case 'semana':
+		            $group = "YEARWEEK(v.venta_fecha, 1)";
+		            $label = "CONCAT(YEAR(v.venta_fecha), '-W', WEEK(v.venta_fecha, 1))";
+		            break;
+		        case 'bimestre':
+		            $group = "CONCAT(YEAR(v.venta_fecha), '-', LPAD(FLOOR((MONTH(v.venta_fecha)-1)/2)+1,2,'0'))";
+		            $label = $group;
+		            break;
+		        case 'trimestre':
+		            $group = "CONCAT(YEAR(v.venta_fecha), '-T', QUARTER(v.venta_fecha))";
+		            $label = $group;
+		            break;
+		        case 'semestre':
+		            $group = "CONCAT(YEAR(v.venta_fecha), '-S', IF(MONTH(v.venta_fecha)<=6,1,2))";
+		            $label = $group;
+		            break;
+		        case 'anual':
+		            $group = "YEAR(v.venta_fecha)";
+		            $label = $group;
+		            break;
+		        case 'mes':
+		        default:
+		            $group = "DATE_FORMAT(v.venta_fecha, '%Y-%m')";
+		            $label = $group;
+		            break;
+		    }
+		    $sql = $this->ejecutarConsulta("
+		        SELECT p.producto_nombre, $label as periodo, SUM(vd.venta_detalle_cantidad) as cantidad
+		        FROM venta_detalle vd
+		        INNER JOIN venta v ON vd.venta_codigo = v.venta_codigo
+		        INNER JOIN producto p ON vd.producto_id = p.producto_id
+		        GROUP BY p.producto_id, $group
+		        ORDER BY cantidad DESC
+		        LIMIT $limite
+		    ");
+		    return $sql->fetchAll(\PDO::FETCH_ASSOC);
+		}
+
+		/*---------- Controlador obtener productos vendidos por periodo ----------*/
+		public function obtenerProductosVendidosPorPeriodo($periodo = 'mes') {
+		    switch ($periodo) {
+		        case 'semana':
+		            $group = "YEARWEEK(v.venta_fecha, 1)";
+		            $label = "CONCAT(YEAR(v.venta_fecha), '-W', WEEK(v.venta_fecha, 1))";
+		            break;
+		        case 'bimestre':
+		            $group = "CONCAT(YEAR(v.venta_fecha), '-', LPAD(FLOOR((MONTH(v.venta_fecha)-1)/2)+1,2,'0'))";
+		            $label = $group;
+		            break;
+		        case 'trimestre':
+		            $group = "CONCAT(YEAR(v.venta_fecha), '-T', QUARTER(v.venta_fecha))";
+		            $label = $group;
+		            break;
+		        case 'semestre':
+		            $group = "CONCAT(YEAR(v.venta_fecha), '-S', IF(MONTH(v.venta_fecha)<=6,1,2))";
+		            $label = $group;
+		            break;
+		        case 'anual':
+		            $group = "YEAR(v.venta_fecha)";
+		            $label = $group;
+		            break;
+		        case 'mes':
+		        default:
+		            $group = "DATE_FORMAT(v.venta_fecha, '%Y-%m')";
+		            $label = $group;
+		            break;
+		    }
+		    $sql = $this->ejecutarConsulta("
+		        SELECT p.producto_nombre, $label as periodo, SUM(vd.venta_detalle_cantidad) as cantidad
+		        FROM venta_detalle vd
+		        INNER JOIN venta v ON vd.venta_codigo = v.venta_codigo
+		        INNER JOIN producto p ON vd.producto_id = p.producto_id
+		        GROUP BY p.producto_id, $group
+		        ORDER BY periodo ASC
+		    ");
+		    return $sql->fetchAll(\PDO::FETCH_ASSOC);
+		}
+
+		/*---------- Controlador obtener todas las ventas ----------*/
+		public function obtenerTodasLasVentas() {
+		    $sql = $this->ejecutarConsulta("
+		        SELECT v.venta_id, v.venta_codigo, v.venta_fecha, v.venta_hora, v.venta_total, c.cliente_nombre, c.cliente_apellido, u.usuario_nombre, u.usuario_apellido
+		        FROM venta v
+		        INNER JOIN cliente c ON v.cliente_id = c.cliente_id
+		        INNER JOIN usuario u ON v.usuario_id = u.usuario_id
+		        ORDER BY v.venta_id DESC
+		    ");
+		    return $sql->fetchAll(\PDO::FETCH_ASSOC);
 		}
 
 	}

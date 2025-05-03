@@ -1,8 +1,13 @@
 <section class="full-width navLateral scroll" id="navLateral">
 	<div class="full-width navLateral-body">
 		<div class="full-width navLateral-body-logo has-text-centered tittles is-uppercase">
-			Sistema de ventas 
+			Sistema FARMAVIDA 
 		</div>
+        <!-- Logo debajo del título -->
+        <div class="has-text-centered" style="margin-bottom: 1em;">
+            <img src="<?php echo APP_URL; ?>app/views/fotos/logo.png" alt="Logo" style="max-height:10vw; width: auto;">
+        </div>
+        		
 		<figure class="full-width" style="height: 77px;">
 			<div class="navLateral-body-cl">
 				<?php

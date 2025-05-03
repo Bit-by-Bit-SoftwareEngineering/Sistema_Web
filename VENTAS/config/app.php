@@ -5,11 +5,11 @@
 	const APP_SESSION_NAME="POS";
 
 	/*----------  Tipos de documentos  ----------*/
-	const DOCUMENTOS_USUARIOS=["DUI","CI","DNI","Cedula","Licencia","Pasaporte","Otro"];
+	const DOCUMENTOS_USUARIOS=["CI","Cedula","Licencia de Conducir","Pasaporte","Otro"];
 
 
 	/*----------  Tipos de unidades de productos  ----------*/
-	const PRODUCTO_UNIDAD=["Unidad","Libra","Kilogramo","Caja","Paquete","Lata","Galon","Botella","Tira","Sobre","Bolsa","Saco","Tarjeta","Otro"];
+	const PRODUCTO_UNIDAD=["Ampolla","Frasco","Comprimidos","Capsulas","Unidad","Gramo(s)","Caja","Paquete","Lata","Botella","Tira","Sobre","Bolsa","Tarjeta","Blister","Otro"];
 
 	/*----------  Configuración de moneda  ----------*/
 	const MONEDA_SIMBOLO="Bs.";

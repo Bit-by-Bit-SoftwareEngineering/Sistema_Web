@@ -676,4 +676,53 @@
 			return json_encode($alerta);
 		}
 
+		/*----------  Controlador obtener clientes por periodo  ----------*/
+		public function obtenerClientesPorPeriodo($periodo = 'mes') {
+		    switch ($periodo) {
+		        case 'semana':
+		            $group = "YEARWEEK(fecha_registro, 1)";
+		            $label = "CONCAT(YEAR(fecha_registro), '-W', WEEK(fecha_registro, 1))";
+		            break;
+		        case 'bimestre':
+		            $group = "CONCAT(YEAR(fecha_registro), '-', LPAD(FLOOR((MONTH(fecha_registro)-1)/2)+1,2,'0'))";
+		            $label = $group;
+		            break;
+		        case 'trimestre':
+		            $group = "CONCAT(YEAR(fecha_registro), '-T', QUARTER(fecha_registro))";
+		            $label = $group;
+		            break;
+		        case 'semestre':
+		            $group = "CONCAT(YEAR(fecha_registro), '-S', IF(MONTH(fecha_registro)<=6,1,2))";
+		            $label = $group;
+		            break;
+		        case 'anual':
+		            $group = "YEAR(fecha_registro)";
+		            $label = $group;
+		            break;
+		        case 'mes':
+		        default:
+		            $group = "DATE_FORMAT(fecha_registro, '%Y-%m')";
+		            $label = $group;
+		            break;
+		    }
+		    $sql = $this->ejecutarConsulta("
+		        SELECT $label as periodo, COUNT(*) as total
+		        FROM cliente
+		        GROUP BY $group
+		        ORDER BY periodo ASC
+		    ");
+		    return $sql->fetchAll(\PDO::FETCH_ASSOC);
+		}
+
+		/*----------  Controlador obtener todos los clientes  ----------*/
+		public function obtenerTodosLosClientes() {
+		    $sql = $this->ejecutarConsulta("
+		        SELECT cliente_id, cliente_tipo_documento, cliente_numero_documento, cliente_nombre, cliente_apellido, cliente_email, fecha_registro
+		        FROM cliente
+		        WHERE cliente_id != 1
+		        ORDER BY cliente_nombre ASC
+		    ");
+		    return $sql->fetchAll(\PDO::FETCH_ASSOC);
+		}
+
 	}
