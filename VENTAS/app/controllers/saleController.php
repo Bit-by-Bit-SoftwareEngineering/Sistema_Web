@@ -1212,4 +1212,18 @@
 		    return $sql->fetchAll(\PDO::FETCH_ASSOC);
 		}
 
+		/*---------- Controlador obtener ventas por mes ----------*/
+		public function obtenerVentasPorMes($anio, $mes) {
+		    $sql = $this->ejecutarConsulta("
+		        SELECT SUM(venta_total) as total
+		        FROM venta
+		        WHERE YEAR(venta_fecha) = :anio AND MONTH(venta_fecha) = :mes
+		    ", [
+		        ':anio' => $anio,
+		        ':mes' => $mes
+		    ]);
+		    $resultado = $sql->fetch(\PDO::FETCH_ASSOC);
+		    return $resultado ? (float)$resultado['total'] : 0;
+		}
+
 	}

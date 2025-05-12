@@ -50,7 +50,27 @@
         </div>
     </div>
 </div>
-
+<div class="box">
+    <label for="gauge-mes-select"><strong>Selecciona el mes:</strong></label>
+    <select id="gauge-mes-select" class="select is-small" style="width:auto;display:inline-block;">
+        <?php
+        $meses = [
+            1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril',
+            5 => 'Mayo', 6 => 'Junio', 7 => 'Julio', 8 => 'Agosto',
+            9 => 'Septiembre', 10 => 'Octubre', 11 => 'Noviembre', 12 => 'Diciembre'
+        ];
+        $anioActual = date('Y');
+        $mesActual = date('n');
+        for ($i = 1; $i <= 12; $i++) {
+            $selected = ($i == $mesActual) ? 'selected' : '';
+            echo "<option value=\"$i\" $selected>{$meses[$i]} $anioActual</option>";
+        }
+        ?>
+    </select>
+    <br>
+    <canvas id="gaugeChart" width="300" height="300" style="display:block;margin:auto;"></canvas>
+    <div id="gauge-value" style="text-align:center;font-size:1.5em;margin-top:10px;"></div>
+</div>
 <!-- Tablas dinámicas -->
 <div class="box">
     <h2 class="subtitle">Productos</h2>
@@ -164,6 +184,49 @@
 </div>
 
 <script type="text/javascript">
+function renderGaugeChart(mes, anio) {
+    if (window.gaugeChartInstance) {
+        window.gaugeChartInstance.destroy();
+    }
+    $.getJSON("app/ajax/gaugeAjax.php", { mes: mes, anio: anio }, function(res) {
+        var total = res.total || 0;
+        var max = res.max || 1000;
+        window.gaugeChartInstance = new Chart(document.getElementById('gaugeChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Ventas', 'Resto'],
+                datasets: [{
+                    data: [total, Math.max(0, max - total)],
+                    backgroundColor: ['#2196f3', '#2c2f3a'],
+                    borderWidth: 10,
+                    circumference: 270,
+                    rotation: 225,
+                    cutout: '70%'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Ventas del mes seleccionado' }
+                }
+            }
+        });
+        $('#gauge-value').text('Total ventas: $' + total);
+    });
+}
+
+function inicializarGaugeChart() {
+    var $select = $('#gauge-mes-select');
+    var mes = $select.val();
+    var anio = new Date().getFullYear();
+    renderGaugeChart(mes, anio);
+
+    $select.off('change').on('change', function() {
+        var mes = $(this).val();
+        renderGaugeChart(mes, anio);
+    });
+}
+
 function renderDashboardCharts() {
     // Ventas por periodo
     var ventasPorPeriodo = <?php echo json_encode($ventasPorPeriodo); ?>;
@@ -286,5 +349,8 @@ function renderDashboardCharts() {
             }
         }
     });
+
+    inicializarGaugeChart();
 }
+
 </script>
