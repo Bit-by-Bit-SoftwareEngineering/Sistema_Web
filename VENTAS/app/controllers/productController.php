@@ -467,7 +467,7 @@
 									<p>
 										<strong>' . $contador . ' - ' . $rows['producto_nombre'] . '</strong><br>
 										<strong>CODIGO:</strong> ' . $rows['producto_codigo'] . ', 
-										<strong>PRECIO:</strong> $' . $rows['producto_precio_venta'] . ', 
+										<strong>PRECIO:</strong> Bs.' . $rows['producto_precio_venta'] . ', 
 										<strong>STOCK:</strong> ' . $rows['producto_stock_total'] . ', 
 										<strong>CATEGORIA:</strong> ' . $rows['categoria_nombre'] . ' <br>
 										<strong>PRESENTACION DEL PRODUCTO:</strong> ' . $rows['producto_tipo_unidad'] . ', 

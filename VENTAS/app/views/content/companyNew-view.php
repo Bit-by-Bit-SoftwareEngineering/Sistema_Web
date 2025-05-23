@@ -48,6 +48,42 @@
 				</div>
 		  	</div>
 		</div>
+        <div class="columns">
+            <div class="column">
+                <div class="control">
+                    <label>Nombre del dueño</label>
+                    <input class="input" type="text" name="dueno_nombre" value="<?php echo $datos['dueno_nombre'] ?? ''; ?>" maxlength="50">
+                </div>
+            </div>
+            <div class="column">
+                <div class="control">
+                    <label>Apellido del dueño</label>
+                    <input class="input" type="text" name="dueno_apellido" value="<?php echo $datos['dueno_apellido'] ?? ''; ?>" maxlength="50">
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="control">
+                    <label>Cédula del dueño</label>
+                    <input class="input" type="text" name="dueno_cedula" value="<?php echo $datos['dueno_cedula'] ?? ''; ?>" maxlength="30">
+                </div>
+            </div>
+            <div class="column">
+                <div class="control">
+                    <label>Teléfono del dueño</label>
+                    <input class="input" type="text" name="dueno_telefono" value="<?php echo $datos['dueno_telefono'] ?? ''; ?>" maxlength="20">
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="control">
+                    <label>Email del dueño</label>
+                    <input class="input" type="email" name="dueno_email" value="<?php echo $datos['dueno_email'] ?? ''; ?>" maxlength="50">
+                </div>
+            </div>
+        </div>
 		<p class="has-text-centered">
 			<button type="submit" class="button is-success is-rounded"><i class="fas fa-sync-alt"></i> &nbsp; Actualizar</button>
 		</p>
@@ -92,6 +128,42 @@
 				</div>
 		  	</div>
 		</div>
+        <div class="columns">
+            <div class="column">
+                <div class="control">
+                    <label>Nombre del dueño</label>
+                    <input class="input" type="text" name="dueno_nombre" maxlength="50">
+                </div>
+            </div>
+            <div class="column">
+                <div class="control">
+                    <label>Apellido del dueño</label>
+                    <input class="input" type="text" name="dueno_apellido" maxlength="50">
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="control">
+                    <label>Cédula del dueño</label>
+                    <input class="input" type="text" name="dueno_cedula" maxlength="30">
+                </div>
+            </div>
+            <div class="column">
+                <div class="control">
+                    <label>Teléfono del dueño</label>
+                    <input class="input" type="text" name="dueno_telefono" maxlength="20">
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="control">
+                    <label>Email del dueño</label>
+                    <input class="input" type="email" name="dueno_email" maxlength="50">
+                </div>
+            </div>
+        </div>
 		<p class="has-text-centered">
 			<button type="reset" class="button is-link is-light is-rounded"><i class="fas fa-paint-roller"></i> &nbsp; Limpiar</button>
 			<button type="submit" class="button is-info is-rounded"><i class="far fa-save"></i> &nbsp; Guardar</button>

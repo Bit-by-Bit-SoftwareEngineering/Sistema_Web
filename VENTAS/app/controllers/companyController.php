@@ -9,14 +9,19 @@
 		public function registrarEmpresaControlador(){
 
 			# Almacenando datos#
-		    $nombre=$this->limpiarCadena($_POST['empresa_nombre']);
+            $nombre=$this->limpiarCadena($_POST['empresa_nombre']);
+            $telefono=$this->limpiarCadena($_POST['empresa_telefono']);
+            $email=$this->limpiarCadena($_POST['empresa_email']);
+            $direccion=$this->limpiarCadena($_POST['empresa_direccion']);
 
-		    $telefono=$this->limpiarCadena($_POST['empresa_telefono']);
-		    $email=$this->limpiarCadena($_POST['empresa_email']);
+            // Nuevos campos del dueño
+            $dueno_nombre = $this->limpiarCadena($_POST['dueno_nombre'] ?? '');
+            $dueno_apellido = $this->limpiarCadena($_POST['dueno_apellido'] ?? '');
+            $dueno_cedula = $this->limpiarCadena($_POST['dueno_cedula'] ?? '');
+            $dueno_telefono = $this->limpiarCadena($_POST['dueno_telefono'] ?? '');
+            $dueno_email = $this->limpiarCadena($_POST['dueno_email'] ?? '');
 
-		    $direccion=$this->limpiarCadena($_POST['empresa_direccion']);
-
-		    # Verificando campos obligatorios #
+            # Verificando campos obligatorios #
             if($nombre==""){
             	$alerta=[
 					"tipo"=>"simple",
@@ -81,27 +86,52 @@
             }
 
             $empresa_datos_reg=[
-				[
-					"campo_nombre"=>"empresa_nombre",
-					"campo_marcador"=>":Nombre",
-					"campo_valor"=>$nombre
-				],
-				[
-					"campo_nombre"=>"empresa_telefono",
-					"campo_marcador"=>":Telefono",
-					"campo_valor"=>$telefono
-				],
-				[
-					"campo_nombre"=>"empresa_email",
-					"campo_marcador"=>":Email",
-					"campo_valor"=>$email
-				],
-				[
-					"campo_nombre"=>"empresa_direccion",
-					"campo_marcador"=>":Direccion",
-					"campo_valor"=>$direccion
-				]
-			];
+                [
+                    "campo_nombre"=>"empresa_nombre",
+                    "campo_marcador"=>":Nombre",
+                    "campo_valor"=>$nombre
+                ],
+                [
+                    "campo_nombre"=>"empresa_telefono",
+                    "campo_marcador"=>":Telefono",
+                    "campo_valor"=>$telefono
+                ],
+                [
+                    "campo_nombre"=>"empresa_email",
+                    "campo_marcador"=>":Email",
+                    "campo_valor"=>$email
+                ],
+                [
+                    "campo_nombre"=>"empresa_direccion",
+                    "campo_marcador"=>":Direccion",
+                    "campo_valor"=>$direccion
+                ],
+                [
+                    "campo_nombre"=>"dueno_nombre",
+                    "campo_marcador"=>":DuenoNombre",
+                    "campo_valor"=>$dueno_nombre
+                ],
+                [
+                    "campo_nombre"=>"dueno_apellido",
+                    "campo_marcador"=>":DuenoApellido",
+                    "campo_valor"=>$dueno_apellido
+                ],
+                [
+                    "campo_nombre"=>"dueno_cedula",
+                    "campo_marcador"=>":DuenoCedula",
+                    "campo_valor"=>$dueno_cedula
+                ],
+                [
+                    "campo_nombre"=>"dueno_telefono",
+                    "campo_marcador"=>":DuenoTelefono",
+                    "campo_valor"=>$dueno_telefono
+                ],
+                [
+                    "campo_nombre"=>"dueno_email",
+                    "campo_marcador"=>":DuenoEmail",
+                    "campo_valor"=>$dueno_email
+                ]
+            ];
 
 			$registrar_empresa=$this->guardarDatos("empresa",$empresa_datos_reg);
 
@@ -167,6 +197,13 @@
 		    $email=$this->limpiarCadena($_POST['empresa_email']);
 
 		    $direccion=$this->limpiarCadena($_POST['empresa_direccion']);
+
+		    // Nuevos campos del dueño
+            $dueno_nombre = $this->limpiarCadena($_POST['dueno_nombre'] ?? '');
+            $dueno_apellido = $this->limpiarCadena($_POST['dueno_apellido'] ?? '');
+            $dueno_cedula = $this->limpiarCadena($_POST['dueno_cedula'] ?? '');
+            $dueno_telefono = $this->limpiarCadena($_POST['dueno_telefono'] ?? '');
+            $dueno_email = $this->limpiarCadena($_POST['dueno_email'] ?? '');
 
 		    # Verificando campos obligatorios #
             if($nombre==""){
@@ -252,6 +289,31 @@
 					"campo_nombre"=>"empresa_direccion",
 					"campo_marcador"=>":Direccion",
 					"campo_valor"=>$direccion
+				],
+				[
+					"campo_nombre"=>"dueno_nombre",
+					"campo_marcador"=>":DuenoNombre",
+					"campo_valor"=>$dueno_nombre
+				],
+				[
+					"campo_nombre"=>"dueno_apellido",
+					"campo_marcador"=>":DuenoApellido",
+					"campo_valor"=>$dueno_apellido
+				],
+				[
+					"campo_nombre"=>"dueno_cedula",
+					"campo_marcador"=>":DuenoCedula",
+					"campo_valor"=>$dueno_cedula
+				],
+				[
+					"campo_nombre"=>"dueno_telefono",
+					"campo_marcador"=>":DuenoTelefono",
+					"campo_valor"=>$dueno_telefono
+				],
+				[
+					"campo_nombre"=>"dueno_email",
+					"campo_marcador"=>":DuenoEmail",
+					"campo_valor"=>$dueno_email
 				]
 			];
 
