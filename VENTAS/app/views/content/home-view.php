@@ -679,12 +679,22 @@
                 };
 
                 if (!clienteInfo.nombre || !clienteInfo.correo || !clienteInfo.celular || !clienteInfo.razonSocial || !clienteInfo.nit || !clienteInfo.metodo_pago) {
-                    alert("Por favor, rellena todos los campos de información del cliente.");
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Campos incompletos',
+                        text: 'Por favor, rellena todos los campos de información del cliente.',
+                        confirmButtonColor: '#3085d6'
+                    });
                     return;
                 }
 
                 if (cart.length === 0) {
-                    alert("El carrito está vacío.");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Carrito vacío',
+                        text: 'El carrito está vacío. Agrega productos antes de proceder al pago.',
+                        confirmButtonColor: '#d33'
+                    });
                     return;
                 }
 
@@ -704,31 +714,39 @@
                         carrito: cartData
                     })
                 })
-                .then(response => response.text()) 
-                .then(text => {
-                    try {
-                        const data = JSON.parse(text);
-                        if (data.success) {
-                            alert("Pedido procesado con éxito.");
-                            cart.length = 0;
-                            updateCartTable();
-                            document.querySelector('#nombreCliente').value = '';
-                            document.querySelector('#correoCliente').value = '';
-                            document.querySelector('#celularCliente').value = '';
-                            document.querySelector('#razonSocial').value = '';
-                            document.querySelector('#nitCliente').value = '';
-                            document.querySelector('#metodoPago').value = '';
-                        } else {
-                            alert("Hubo un error al procesar el pedido: " + data.message);
-                        }
-                    } catch (e) {
-                        alert("Error en la respuesta del servidor: " + text);
-                        console.error('Error:', e);
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Pedido procesado con éxito',
+                            html: `<p>Tu código de pedido para recoger es: <strong>${data.codigo_pedido}</strong></p>`,
+                            confirmButtonColor: '#3085d6'
+                        });
+                        cart.length = 0;
+                        updateCartTable();
+                        document.querySelector('#nombreCliente').value = '';
+                        document.querySelector('#correoCliente').value = '';
+                        document.querySelector('#celularCliente').value = '';
+                        document.querySelector('#razonSocial').value = '';
+                        document.querySelector('#nitCliente').value = '';
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Hubo un error al procesar el pedido. Inténtelo de nuevo.',
+                            confirmButtonColor: '#d33'
+                        });
                     }
                 })
                 .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error de conexión',
+                        text: 'No se pudo conectar con el servidor.',
+                        confirmButtonColor: '#d33'
+                    });
                     console.error('Error:', error);
-                    alert("Hubo un error al procesar el pedido.");
                 });
             });
 

@@ -33,14 +33,13 @@ try {
     // Definir valores adicionales para el pedido
     $estado = 'pendiente';
     $metodo_pago = isset($cliente['metodo_pago']) ? $cliente['metodo_pago'] : null;
-    $razon_social = isset($cliente['razon_social']) ? $cliente['razon_social'] : null;
+    $razon_social = isset($cliente['razonSocial']) ? $cliente['razonSocial'] : null;
     $nit_cliente = isset($cliente['nit']) ? $cliente['nit'] : null;
 
     // Insertar datos del pedido
     $stmt = $conn->prepare("INSERT INTO pedido (codigo_pedido, fecha, nombre_cliente, correo_cliente, celular_cliente, estado, metodo_pago, razon_social, nit_cliente) VALUES (?, NOW(), ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssssss", $codigo_pedido, $cliente['nombre'], $cliente['correo'], $cliente['celular'], $estado, $metodo_pago, $razon_social, $nit_cliente);
     $stmt->execute();
-    $pedidoId = $stmt->insert_id;
     $stmt->close();
 
     // Insertar productos del carrito
@@ -53,7 +52,7 @@ try {
 
     // Confirmar transacción
     $conn->commit();
-    echo json_encode(['success' => true, 'message' => 'Pedido procesado exitosamente.']);
+    echo json_encode(['success' => true, 'message' => 'Pedido procesado exitosamente.', 'codigo_pedido' => $codigo_pedido]);
 } catch (Exception $e) {
     // Revertir transacción en caso de error
     $conn->rollback();

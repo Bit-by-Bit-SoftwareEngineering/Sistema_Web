@@ -282,7 +282,9 @@
 							<th class="has-text-centered">Fecha de Registro</th>
 		                    <th class="has-text-centered">Documento</th>
 		                    <th class="has-text-centered">Nombre</th>
+		                    <th class="has-text-centered">Teléfono</th>
 		                    <th class="has-text-centered">Email</th>
+							<th class="has-text-centered">Dirección</th>
 		                    <th class="has-text-centered">Actualizar</th>
 		                    <th class="has-text-centered">Eliminar</th>
 		                </tr>
@@ -300,7 +302,9 @@
 							<td>'.$rows['fecha_registro'].'</td>
 							<td>'.$rows['cliente_tipo_documento'].': '.$rows['cliente_numero_documento'].'</td>
 							<td>'.$rows['cliente_nombre'].' '.$rows['cliente_apellido'].'</td>
+							<td>'.$rows['cliente_telefono'].'</td>
 							<td>'.$rows['cliente_email'].'</td>
+							<td>'.$rows['cliente_direccion'].'</td>
 			                <td>
 			                    <a href="'.APP_URL.'clientUpdate/'.$rows['cliente_id'].'/" class="button is-success is-rounded is-small">
 			                    	<i class="fas fa-sync fa-fw"></i>
