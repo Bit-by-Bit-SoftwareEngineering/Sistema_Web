@@ -397,7 +397,7 @@
 			$pagina = (isset($pagina) && $pagina > 0) ? (int) $pagina : 1;
 			$inicio = ($pagina > 0) ? (($pagina * $registros) - $registros) : 0;
 		
-			$campos = "producto.producto_id, producto.producto_codigo, producto.producto_nombre, producto_stock_total, producto.producto_precio_venta, producto.producto_foto, categoria.categoria_nombre";
+			$campos = "producto.producto_id, producto.producto_codigo, producto.producto_nombre, producto_stock_total, producto.producto_precio_venta, producto.producto_foto, categoria.categoria_nombre, producto.producto_tipo_unidad, producto.producto_marca, producto.producto_modelo";
 		
 			// Determinación de consulta según búsqueda o categoría
 			if (isset($busqueda) && $busqueda != "") {
@@ -469,7 +469,10 @@
 										<strong>CODIGO:</strong> ' . $rows['producto_codigo'] . ', 
 										<strong>PRECIO:</strong> $' . $rows['producto_precio_venta'] . ', 
 										<strong>STOCK:</strong> ' . $rows['producto_stock_total'] . ', 
-										<strong>CATEGORIA:</strong> ' . $rows['categoria_nombre'] . '
+										<strong>CATEGORIA:</strong> ' . $rows['categoria_nombre'] . ' <br>
+										<strong>PRESENTACION DEL PRODUCTO:</strong> ' . $rows['producto_tipo_unidad'] . ', 
+                						<strong>MARCA:</strong> ' . $rows['producto_marca'] . ', 
+                						<strong>MODELO:</strong> ' . $rows['producto_modelo'] . '
 									</p>
 								</div>
 								<div class="has-text-right">
